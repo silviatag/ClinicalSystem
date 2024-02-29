@@ -1,0 +1,300 @@
+﻿<Page x:Class="newProj.ViewAppointments"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:newProj"
+	  xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ViewAppointments">
+	<Page.Resources>
+		<Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="15">
+							<!-- Adjust the CornerRadius to control the roundness -->
+							<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="CustomCalendarStyle" TargetType="{x:Type syncfusion:CalendarEdit}">
+			<Setter Property="Background" Value="#D9F8F1"/>
+			<Setter Property="Foreground" Value="#384e7c"/>
+			<Setter Property="BorderBrush" Value="Gray"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontSize" Value="20"/>
+		</Style>
+	</Page.Resources>
+	<Grid>
+		<!--
+		<syncfusion:TileViewControl Name="tileViewControl">
+			<syncfusion:TileViewItem Content="Content 1" Header="Item 1" />
+			<syncfusion:TileViewItem Content="Content 2" Header="Item 2" />
+			<syncfusion:TileViewItem Content="Content 3" Header="Item 3" />
+			<syncfusion:TileViewItem Content="Content 4" Header="Item 4" />
+			<syncfusion:TileViewItem Content="Content 4" Header="Item 4" />
+			<syncfusion:TileViewItem Content="Content 4" Header="Item 4" />
+			<syncfusion:TileViewItem Content="Content 4" Header="Item 4" />
+			<syncfusion:TileViewItem Content="Content 4" Header="Item 4" />
+			<syncfusion:TileViewItem Content="Content 4" Header="Item 4" />
+			<syncfusion:TileViewItem Content="Content 4" Header="Item 4" />
+			<syncfusion:TileViewItem Content="Content 4" Header="Item 4" />
+			<syncfusion:TileViewItem Content="Content 4" Header="Item 4" />
+		</syncfusion:TileViewControl>
+		-->
+		<!-- <Grid.RowDefinitions>
+			<RowDefinition Height="2*"/>
+			<RowDefinition Height="8*"/>
+		</Grid.RowDefinitions> -->
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1.5*"/>
+			<RowDefinition Height="8*"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="2*"/>
+				<RowDefinition Height="4*"/>
+				<RowDefinition Height="2*"/>
+				<RowDefinition Height="2*"/>
+			</Grid.RowDefinitions>
+			<Grid Grid.Row="1" >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width=".25*"/>
+					<ColumnDefinition Width="8.5*"/>
+					<ColumnDefinition Width="1.25*"/>
+				</Grid.ColumnDefinitions>
+				<TextBlock Grid.Column="1" Text="Scheduled appointments" VerticalAlignment="Center" FontSize="25" FontWeight="Medium" FontFamily="Inter" />
+				<Grid Grid.Column="2">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="3*"/>
+						<ColumnDefinition Width="3*"/>
+						<ColumnDefinition Width="3*"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="3*"/>
+						<RowDefinition Height="3*"/>
+					</Grid.RowDefinitions>
+					<Grid Grid.Column="0" Grid.Row="1">
+						<Image Source="/images/search.png" Margin="5,4,5,4"/>
+					</Grid>
+					<Grid Grid.Column="1" Grid.Row="1">
+						<Image Source="/images/notification.png"/>
+					</Grid>
+					<Grid Grid.Column="2" Grid.Row="1">
+						<Image Source="/images/profile.png"/>
+					</Grid>
+				</Grid>
+			</Grid>
+			<Grid Grid.Row="2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width=".25*"/>
+					<ColumnDefinition Width="9.75*"/>
+				</Grid.ColumnDefinitions>
+				<Line Grid.Column="1" X1="6" Y1="5" X2="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType={x:Type Grid}}}" Y2="5" Stroke="#387C6D" StrokeThickness="1"/>
+			</Grid>
+		</Grid>
+		<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+			<Grid>
+				<!--<TextBlock Name="tbTime" TextAlignment="Center" VerticalAlignment="Center" FontSize="30"/>-->
+				<StackPanel Orientation="Vertical">
+					<Grid Height="800">
+						<Grid.RowDefinitions>
+						<RowDefinition Height="6*"/>
+						<RowDefinition Height="4*"/>
+					</Grid.RowDefinitions>
+						<Grid Grid.Row="0">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width=".25*"/>
+								<ColumnDefinition Width="3.75*"/>
+								<ColumnDefinition Width="6*"/>
+							</Grid.ColumnDefinitions>
+							<Grid Grid.Column="1">
+								<Grid>
+
+									<Grid.RowDefinitions>
+										<RowDefinition Height="1.25*"/>
+										<RowDefinition Height="7.5*"/>
+										<RowDefinition Height="1.25*"/>
+									</Grid.RowDefinitions>
+									<Viewbox Grid.Row="1">
+										<syncfusion:CalendarEdit HorizontalAlignment="Center" Style="{StaticResource CustomCalendarStyle}" Width="400" Height="350" FontSize="20"/>
+									</Viewbox>
+								</Grid>
+							</Grid>
+							<Grid Grid.Column="2">
+								<Grid.RowDefinitions>
+									<RowDefinition Height=".25*"/>
+									<RowDefinition Height="9.5*"/>
+									<RowDefinition Height=".25*"/>
+								</Grid.RowDefinitions>
+								<Grid Grid.Row="1">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width=".5*"/>
+										<ColumnDefinition Width="9*"/>
+										<ColumnDefinition Width=".5*"/>
+									</Grid.ColumnDefinitions>
+									<Grid Grid.Column="1" >
+										<Grid.RowDefinitions>
+											<RowDefinition Height="1*"/>
+											<RowDefinition Height=".15*"/>
+											<RowDefinition Height="1*"/>
+											<RowDefinition Height=".15*"/>
+											<RowDefinition Height="5.7*"/>
+										</Grid.RowDefinitions>
+										<Border Grid.Row="0" CornerRadius="30" Background="#387C6D">
+											<TextBlock Text="Upcoming Appointments" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Inter" FontSize="15" Foreground="White" FontWeight="SemiBold"/>
+										</Border>
+										<Border Grid.Row="2" CornerRadius="30" Background="#387C6D">
+											<Grid>
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="1*"/>
+													<ColumnDefinition Width="2*"/>
+													<ColumnDefinition Width="2*"/>
+													<ColumnDefinition Width="2*"/>
+													<ColumnDefinition Width="2*"/>
+													<ColumnDefinition Width="1*"/>
+												</Grid.ColumnDefinitions>
+												<TextBlock Grid.Column="1" Text="Name" FontFamily="Inter" FontSize="10" FontWeight="Medium" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+												<TextBlock Grid.Column="2" Text="Age" FontFamily="Inter" FontSize="10" FontWeight="Medium" TextAlignment="Center" VerticalAlignment="Center"  Foreground="White" />
+												<TextBlock Grid.Column="3" Text="Time" FontFamily="Inter" FontSize="10" FontWeight="Medium" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+												<TextBlock Grid.Column="4" Text="Type" FontFamily="Inter" FontSize="10" FontWeight="Medium" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+											</Grid>
+										</Border>
+										<Border Grid.Row="4" CornerRadius="30" Background="#F0F0F0">
+											<Grid>
+												<ScrollViewer>
+													<StackPanel x:Name="appsPanel" Orientation="Vertical">
+
+													</StackPanel>
+												</ScrollViewer>
+											</Grid>
+										</Border>
+									</Grid>
+								</Grid>
+							</Grid>
+						</Grid>
+						<Grid Grid.Row="1">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="2*"/>
+								<RowDefinition Height="2*"/>
+								<RowDefinition Height="6*"/>
+							</Grid.RowDefinitions>
+							<Grid Grid.Row="0">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width=".25*"/>
+									<ColumnDefinition Width="8.5*"/>
+									<ColumnDefinition Width="1.25*"/>
+								</Grid.ColumnDefinitions>
+								<Grid Grid.Column="1">
+									<TextBlock Text="Next appointment in:" FontSize="20" FontWeight="SemiBold" FontFamily="Inter" VerticalAlignment="Center" />
+								</Grid>
+							</Grid>
+							<Grid Grid.Row="1">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width=".25*"/>
+									<ColumnDefinition Width="3*"/>
+									<ColumnDefinition Width="6.75*"/>
+								</Grid.ColumnDefinitions>
+								<Border Grid.Column="1" CornerRadius="20" Background="#384e7c">
+									<TextBlock Name="tbTime" TextAlignment="Center" VerticalAlignment="Center" FontSize="40" Foreground="White" FontWeight="Bold"/>
+								</Border>
+							</Grid>
+							<Grid Grid.Row="2">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width=".25*"/>
+									<ColumnDefinition Width="8.5*"/>
+									<ColumnDefinition Width="1.25*"/>
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="1*"/>
+									<RowDefinition Height="6*"/>
+									<RowDefinition Height="3*"/>
+								</Grid.RowDefinitions>
+								<Border Grid.Column="1" Grid.Row="1" CornerRadius="20" Background="#F0F0F0" BorderBrush="Gray" BorderThickness="1">
+									<Grid>
+										<Grid.RowDefinitions>
+											<RowDefinition Height="0.5*"/>
+											<RowDefinition Height="9.5*"/>
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width=".25*"/>
+											<ColumnDefinition Width="1.5*"/>
+											<ColumnDefinition Width="3.25*"/>
+											<ColumnDefinition Width="3.25*"/>
+											<ColumnDefinition Width="1.5*"/>
+											<ColumnDefinition Width=".25*"/>
+										</Grid.ColumnDefinitions>
+										<Grid Grid.Row="1" Grid.Column="1">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="1*"/>
+												<ColumnDefinition Width="8*"/>
+												<ColumnDefinition Width="1*"/>
+											</Grid.ColumnDefinitions>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="1*"/>
+												<RowDefinition Height="8*"/>
+												<RowDefinition Height="1*"/>
+											</Grid.RowDefinitions>
+											<Image Grid.Row="1" Grid.Column="1" Source="/images/profile.png"/>
+										</Grid>
+										<Grid Grid.Row="1" Grid.Column="2">
+											<TextBlock Text="Patient Name" FontSize="25" FontWeight="Medium" FontFamily="Inter" VerticalAlignment="Center" />
+										</Grid>
+										<Grid Grid.Row="1" Grid.Column="3">
+											<TextBlock Text="Appointment Type" FontSize="25" FontWeight="Medium" FontFamily="Inter" VerticalAlignment="Center" />
+										</Grid>
+										<Grid Grid.Row="1" Grid.Column="4">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="1*"/>
+												<ColumnDefinition Width="8*"/>
+												<ColumnDefinition Width="1*"/>
+											</Grid.ColumnDefinitions>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="3*"/>
+												<RowDefinition Height="4*"/>
+												<RowDefinition Height="3*"/>
+											</Grid.RowDefinitions>
+											<Border CornerRadius="20" Background="#387C6D" Grid.Row="1" Grid.Column="1">
+												<Grid>
+													<Button Content="Open File" Foreground="White" FontSize="15" FontWeight="Medium" Style="{StaticResource RoundedButtonStyle}"/>
+												</Grid>
+											</Border>
+										</Grid>
+									</Grid>
+								</Border>
+							</Grid>
+						</Grid>
+					</Grid>
+					<Grid Height="800">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="1*"/>
+							<RowDefinition Height="9*"/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width=".25*"/>
+							<ColumnDefinition Width="9.5*"/>
+							<ColumnDefinition Width=".25*"/>
+						</Grid.ColumnDefinitions>
+						<Grid Grid.Row="0" Grid.Column="1">
+							<TextBlock Text="Your Schedule" FontSize="25" FontWeight="Medium" FontFamily="Inter" VerticalAlignment="Center"/>
+						</Grid>
+						<Grid Grid.Row="1" Grid.Column="1" Background="#D9F8F1">
+							<syncfusion:SfScheduler x:Name="Schedule" Background="#D9F8F1" HorizontalAlignment="Center" VerticalAlignment="Center" ViewType="Month" FirstDayOfWeek="Sunday"/>
+
+						</Grid>
+					</Grid>
+				</StackPanel>
+			</Grid>
+		</ScrollViewer>
+	</Grid>
+</Page>
